@@ -1,11 +1,13 @@
 import json
 import os
+from dotenv import load_dotenv
 from googleapiclient.discovery import build
 import isodate
 
 
 class Channel:
     """Класс для ютуб-канала"""
+    load_dotenv('../.env')
     API_KEY: str = os.getenv('API_KEY')
     youtube = build('youtube', 'v3', developerKey=API_KEY)
 
