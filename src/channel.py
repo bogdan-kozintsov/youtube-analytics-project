@@ -18,6 +18,27 @@ class Channel:
         self.__channel_id = channel_id
         self.channel = self.__youtube.channels().list(id=self.__channel_id, part='snippet,statistics').execute()
 
+    def __str__(self):
+        return f'{self.title} (https://www.youtube.com/channel/{self.__channel_id})'
+
+    def __add__(self, other):
+        return int(self.subscriber_сount) + int(other.subscriber_сount)
+
+    def __sub__(self, other):
+        return int(self.subscriber_сount) - int(other.subscriber_сount)
+
+    def __lt__(self, other):
+        return int(self.subscriber_сount) < int(other.subscriber_сount)
+
+    def __le__(self, other):
+        return int(self.subscriber_сount) <= int(other.subscriber_сount)
+
+    def __gt__(self, other):
+        return int(self.subscriber_сount) > int(other.subscriber_сount)
+
+    def __ge__(self, other):
+        return int(self.subscriber_сount) >= int(other.subscriber_сount)
+
     def printj(dict_to_print: dict) -> None:
         """Выводит словарь в json-подобном удобном формате с отступами"""
         print(json.dumps(dict_to_print, indent=2, ensure_ascii=False))
